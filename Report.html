@@ -11781,6 +11781,7 @@ div#notebook {
 <h1 id="ELEN3007-ICAO-Codes-Weather-analysis">ELEN3007 ICAO-Codes-Weather-analysis<a class="anchor-link" href="#ELEN3007-ICAO-Codes-Weather-analysis">&#182;</a></h1><h5 id="This-Script-imports-the-weather-data-for-the-Chulman-Airport-(UELL)-weather-station,-in-Russia-and-then-answers-question-outlined.">This Script imports the weather data for the Chulman Airport (UELL) weather station, in Russia and then answers question outlined.<a class="anchor-link" href="#This-Script-imports-the-weather-data-for-the-Chulman-Airport-(UELL)-weather-station,-in-Russia-and-then-answers-question-outlined.">&#182;</a></h5><p>Each question that has a discussion of results is analised in the respective question markdown block before the code block.</p>
 <p>The Git repo, storing this code, can be seen here: <a href="https://github.com/SoIidarity/ICAO-Weather-Analysis-Python">https://github.com/SoIidarity/ICAO-Weather-Analysis-Python</a></p>
 <p>This main file, showing all code execution, can be seen here: <a href="https://github.com/SoIidarity/ICAO-Weather-Analysis-Python/blob/master/MainFile.ipynb">https://github.com/SoIidarity/ICAO-Weather-Analysis-Python/blob/master/MainFile.ipynb</a></p>
+<p>Both a PDF version and HTML version of this report are included in this submission. For an optimal viewing experience, please view the HTML version as the formatting is persistent from the Jupyter notebook.</p>
 
 </div>
 </div>
@@ -11863,7 +11864,9 @@ div#notebook {
     <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span>
         <span class="s1">&#39;&lt;table&gt;&lt;tr&gt;</span><span class="si">{}</span><span class="s1">&lt;/tr&gt;&lt;/table&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="s1">&#39;&lt;/tr&gt;&lt;tr&gt;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-                <span class="s1">&#39;&lt;td&gt;</span><span class="si">{}</span><span class="s1">&lt;/td&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;&lt;/td&gt;&lt;td&gt;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">row</span><span class="p">))</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">)</span>
+                <span class="s1">&#39;&lt;td&gt;</span><span class="si">{}</span><span class="s1">&lt;/td&gt;&#39;</span>
+                <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;&lt;/td&gt;&lt;td&gt;&#39;</span>
+                <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">row</span><span class="p">))</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">)</span>
         <span class="p">)</span>
     <span class="p">))</span>
 
@@ -11876,7 +11879,8 @@ div#notebook {
 <span class="k">def</span> <span class="nf">drawImg</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">()</span>
     <span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;png&#39;</span><span class="p">)</span>
-    <span class="n">displayHTML</span><span class="p">(</span><span class="s2">&quot;&lt;img src=&#39;data:image/png;base64,</span><span class="si">{0}</span><span class="s2">&#39;/&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">b64encode</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)))</span>
+    <span class="n">displayHTML</span><span class="p">(</span><span class="s2">&quot;&lt;img src=&#39;data:image/png;base64,</span><span class="si">{0}</span><span class="s2">&#39;/&gt;&quot;</span>
+                <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">b64encode</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)))</span>
 </pre></div>
 
 </div>
@@ -11939,8 +11943,11 @@ div#notebook {
     <span class="n">counter</span> <span class="o">=</span> <span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
 <span class="c1"># printMatrix(dataValues)</span>
 
-<span class="n">displayHTML</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dataValues</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1995&#39;</span><span class="p">,</span> <span class="s1">&#39;2000&#39;</span><span class="p">,</span> <span class="s1">&#39;2005&#39;</span><span class="p">,</span> <span class="s1">&#39;2010&#39;</span><span class="p">,</span> <span class="s1">&#39;2015&#39;</span><span class="p">],</span>
-                         <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Minimum&#39;</span><span class="p">,</span> <span class="s1">&#39;Maximum&#39;</span><span class="p">,</span> <span class="s1">&#39;Mean&#39;</span><span class="p">,</span> <span class="s1">&#39;Standard Deviation&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">to_html</span><span class="p">())</span>
+
+<span class="n">displayHTML</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dataValues</span><span class="p">,</span>
+                         <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1995&#39;</span><span class="p">,</span> <span class="s1">&#39;2000&#39;</span><span class="p">,</span> <span class="s1">&#39;2005&#39;</span><span class="p">,</span> <span class="s1">&#39;2010&#39;</span><span class="p">,</span> <span class="s1">&#39;2015&#39;</span><span class="p">],</span>
+                         <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Minimum&#39;</span><span class="p">,</span> <span class="s1">&#39;Maximum&#39;</span><span class="p">,</span> <span class="s1">&#39;Mean&#39;</span><span class="p">,</span> <span class="s1">&#39;Standard Deviation&#39;</span><span class="p">]</span>
+                         <span class="p">)</span><span class="o">.</span><span class="n">to_html</span><span class="p">())</span>
 </pre></div>
 
 </div>
@@ -12030,7 +12037,7 @@ div#notebook {
 <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">weatherData</span><span class="p">:</span>
     <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">year</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">hist</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                 <span class="n">label</span><span class="o">=</span><span class="mi">1995</span> <span class="o">+</span> <span class="n">counter</span> <span class="o">*</span> <span class="mi">5</span><span class="p">,</span>  <span class="c1">#count the current year, from the first dataset in 1995</span>
+                 <span class="n">label</span><span class="o">=</span><span class="mi">1995</span> <span class="o">+</span> <span class="n">counter</span> <span class="o">*</span> <span class="mi">5</span><span class="p">,</span> 
                  <span class="n">axlabel</span><span class="o">=</span><span class="s2">&quot;Temperature (C)&quot;</span><span class="p">)</span>
     <span class="n">counter</span> <span class="o">=</span> <span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Probability Distribution Function&#39;</span><span class="p">)</span>
@@ -13603,8 +13610,11 @@ Note here that we are slicing the data on each year to ignore the leap year in 2
         <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
         <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">b</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
         <span class="n">autoCorrelation</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">correlate</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-<span class="n">displayHTML</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">autoCorrelation</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1995&#39;</span><span class="p">,</span> <span class="s1">&#39;2000&#39;</span><span class="p">,</span> <span class="s1">&#39;2005&#39;</span><span class="p">,</span> <span class="s1">&#39;2010&#39;</span><span class="p">,</span> <span class="s1">&#39;2015&#39;</span><span class="p">],</span>
-                         <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1995&#39;</span><span class="p">,</span> <span class="s1">&#39;2000&#39;</span><span class="p">,</span> <span class="s1">&#39;2005&#39;</span><span class="p">,</span> <span class="s1">&#39;2010&#39;</span><span class="p">,</span> <span class="s1">&#39;2015&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">to_html</span><span class="p">())</span>
+        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1995&#39;</span><span class="p">,</span> <span class="s1">&#39;2000&#39;</span><span class="p">,</span> <span class="s1">&#39;2005&#39;</span><span class="p">,</span> <span class="s1">&#39;2010&#39;</span><span class="p">,</span> <span class="s1">&#39;2015&#39;</span><span class="p">]</span>
+        <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1995&#39;</span><span class="p">,</span> <span class="s1">&#39;2000&#39;</span><span class="p">,</span> <span class="s1">&#39;2005&#39;</span><span class="p">,</span> <span class="s1">&#39;2010&#39;</span><span class="p">,</span> <span class="s1">&#39;2015&#39;</span><span class="p">]</span>
+<span class="n">displayHTML</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">autoCorrelation</span><span class="p">,</span>
+                         <span class="n">columns</span><span class="p">,</span>
+                         <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">to_html</span><span class="p">())</span>
 </pre></div>
 
 </div>
@@ -13697,7 +13707,7 @@ Note here that we are slicing the data on each year to ignore the leap year in 2
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -13706,10 +13716,15 @@ Note here that we are slicing the data on each year to ignore the leap year in 2
     <span class="k">if</span> <span class="p">(</span><span class="n">counter</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>  <span class="c1">#on the first loop, generate the subplots</span>
         <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">counter</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>  <span class="c1"># if we are at the last figure, we want it to be on its own line</span>
-        <span class="n">plot_acf</span><span class="p">(</span><span class="n">year</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Autocorrelation for </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1995</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">counter</span><span class="p">))</span>
+        <span class="n">plot_acf</span><span class="p">(</span><span class="n">year</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> 
+                 <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Autocorrelation for </span><span class="si">{}</span><span class="s2">&quot;</span>
+                 <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1995</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">counter</span><span class="p">))</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">plot_acf</span><span class="p">(</span><span class="n">year</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Autocorrelation for </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1995</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">counter</span><span class="p">),</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="n">counter</span> <span class="o">%</span> <span class="mi">2</span><span class="p">])</span>
+        <span class="n">plot_acf</span><span class="p">(</span><span class="n">year</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> 
+                 <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Autocorrelation for </span><span class="si">{}</span><span class="s2">&quot;</span>
+                 <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1995</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">counter</span><span class="p">),</span> 
+                 <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="n">counter</span> <span class="o">%</span> <span class="mi">2</span><span class="p">])</span>
     <span class="k">if</span> <span class="n">counter</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># every two figures, we need to generate a new row</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">counter</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">):</span>  <span class="c1">#a new sub plot is needed on second row</span>
@@ -13719,9 +13734,12 @@ Note here that we are slicing the data on each year to ignore the leap year in 2
 <span class="n">counter</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">weatherData</span><span class="p">:</span>
-    <span class="n">plot_acf</span><span class="p">(</span><span class="n">year</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Autocorrelation All 5 years together&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1995</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">counter</span><span class="p">),</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
     
-
+    <span class="n">plot_acf</span><span class="p">(</span><span class="n">year</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span>
+             <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Autocorrelation All 5 years together&quot;</span>
+             <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1995</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">counter</span><span class="p">),</span> 
+             <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">,</span>
+             <span class="n">label</span><span class="o">=</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
@@ -13732,6 +13750,411 @@ Note here that we are slicing the data on each year to ignore the leap year in 2
 <div class="output_wrapper">
 <div class="output">
 
+
+<div class="output_area">
+<div class="prompt"></div>
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABWQAAAF0CAYAAACkFDA5AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xt8W/V9//G3Lr7EVxLHdpwEJwRCGLffuKTtCiXgJkug
+rKRt2EIXCuseD36PQddmUCjLaGnHdX1wW2nWkZauwLaSJaSmpS2BLlB+EMolXBpScilg52rHd/kS
+W9I55/eHLflItmRZkaUj6fV8PGgknSP5q0RNrLc/en9dlmVZAgAAAAAAAABMOXemFwAAAAAAAAAA
++YJAFgAAAAAAAADShEAWAAAAAAAAANKEQBYAAAAAAAAA0oRAFgAAAAAAAADShEAWAAAAAAAAANKE
+QBYAACCPrV69Wp/97GcTPr+9vV3/+7//O4UrmryDBw/q9NNPn/C8Dz/8UG+88YYk6fnnn9c//uM/
+pmwN//Vf/6ULLrhAP/jBD47rcdavX68VK1Zo+fLlWrt2rXp7eyVJPp9PX/nKV7R8+XJdfvnl+tWv
+fhW+TyAQ0L333qtFixappaUlfPvDDz+sj3/841qxYkX4v+eff/641gcAAIDjRyALAACQp/bu3avy
+8nLNnj1bb7/9dkL3ee2117Rt27YpXtnU+M1vfhMOZJctW6Z77rknZY/93HPPae3atfq7v/u7pB/j
+2Wef1bPPPqvNmzfr17/+tVwul370ox9Jku677z7V1dVp69at+tGPfqQ77rhDra2tkqTrr79eJSUl
+4z7mmjVrwo/77LPPatmyZUmvDwAAAKlBIAsAAJCnfvazn2nFihW6/PLL1djYGL79tddeiwjuQtd3
+7dqlf/7nf9bWrVv1D//wD5KkX//617r88su1YsUKfelLX9L+/fslSYODg7rlllvU0NCgSy+9VE8/
+/bQkaWhoSN/61re0fPlyXXrppbr33ntlGIYkqaGhQd///ve1fPlyHT58WFdffbUefPBBXXrppXrr
+rbfk8/l08803a/ny5fr0pz+tp556asxzMk1T3/nOd7R8+XI1NDTo5ptvViAQ0LZt2/TII4/o8ccf
+17333qstW7bo2muvlSR1d3fra1/7mpYvX67LLrtMGzZsCD/eokWL1NjYqJUrV+rCCy/UT37ykzFf
+87vf/a7eeecd/eu//qsefvjhST1Hu5NPPln33HOPysrK5Ha7dc4552jfvn2SpK1bt2r16tWSpFmz
+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
+rl1r3aQvzKzNX/3qV9ZNem5sbCy2bdsWx44di4mJibj33nvj6quvtm7Sc51q8/nnn7duLkAC2R54
+6aWX4u9//3vs3r07/vrXv8b27dtj9+7dvZ4Wi9j73ve+eOKJJ5rn3/zmN+POO++MW265Jb7//e/H
+nj174s477+zhDFlMRkdH4zvf+U5s2LChOfbEE0/MqslPfOIT8dRTT8WePXuiWq3G7bffHjfddFPz
+DypwvnWqzYiIr3zlK7Fp06a2+9Qm3fT73/8+/vznP8fu3bvjP//5T3zyk5+MDRs2WDfpuU61+f73
+v9+6Sc/9+te/jmuuuSbuueeeeO211+Kzn/1srF+/3rpJz3WqzXXr1lk3FyAtC3rghRdeiI985CMR
+EfHOd74z3njjjThx4kSPZwXTXnzxxfjwhz8cERGbNm2KF154occzYjEZGBiIp59+OlatWtUc61ST
+Bw4ciLVr18bSpUtjaGgo1q9fH/v37+/VtFkEOtVmJ2qTbrv++uvjBz/4QUREXHzxxTE2NmbdpC90
+qs0sy2bdpzbptltvvTXuueeeiIg4fPhwrF692rpJX+hUm52ozflPINsDR48ejUsvvbR5vnz58jhy
+5EgPZ8Ri95e//CW++MUvxqc//en43e9+F2NjY80WBStWrFCfdFWlUomhoaG2sU41efTo0Vi+fHnz
+HmspF1qn2oyIePbZZ+Ouu+6KL3/5y/Hvf/9bbdJ15XI5RkZGIiJiz5498aEPfci6SV/oVJvlctm6
+Sd/41Kc+FQ888EBs377duklfaa3NCH/eXIi0LOgDRVH0egosYu94xzti69atccstt8Srr74ad911
+V9vOBfVJv5mrJtUqvfDxj388li1bFmvWrIkdO3bEk08+GevWrWu7R23SLb/85S9jz549sWvXrvjo
+Rz/aHLdu0muttXnw4EHrJn3jZz/7Wfzxj3+Mr33ta211Z92k11prc/v27dbNBcgO2R5YtWpVHD16
+tHn++uuvx8qVK3s4Ixaz1atXx6233hpJksTb3/72uOyyy+KNN96I8fHxiIj417/+dcp/ngsX2sjI
+yKya7LSWqlW6bcOGDbFmzZqIiLjxxhvjlVdeUZv0xG9/+9v40Y9+FE8//XQsXbrUuknfmFmb1k36
+wcGDB+Pw4cMREbFmzZrIsiwuuugi6yY916k2r7rqKuvmAiSQ7YEPfvCD8fzzz0dExKFDh2LVqlWx
+ZMmSHs+KxWrv3r2xc+fOiIg4cuRIHDt2LG677bZmjf7iF7+IG264oZdThPjABz4wqyavvfba+MMf
+/hDHjx+PkydPxv79++O9731vj2fKYnPffffFq6++GhH1XsdXXnml2qTr3nzzzXj00Ufjxz/+cfPL
+PKyb9INOtWndpB+8/PLLsWvXroiotxQcHR21btIXOtXmt771LevmApQU9jX3xOOPPx4vv/xyJEkS
+3/72t+Pqq6/u9ZRYpE6cOBEPPPBAHD9+PGq1WmzdujXWrFkT3/jGN2JiYiIuv/zyeOSRR6JarfZ6
+qiwSBw8ejO9973vx2muvRaVSidWrV8fjjz8e27Ztm1WTP//5z2Pnzp2RJEls2bIlPvaxj/V6+ixg
+nWpzy5YtsWPHjhgeHo6RkZF45JFHYsWKFWqTrtq9e3f88Ic/jCuuuKI59t3vfjceeugh6yY91ak2
+b7vttnj22Wetm/TU+Ph4PPjgg3H48OEYHx+PrVu3xjXXXNPx70Bqk27qVJsjIyPx2GOPWTcXGIEs
+AAAAAECXaFkAAAAAANAlAlkAAAAAgC4RyAIAAAAAdIlAFgAAAACgSwSyAAAAAABdIpAFAAAAAOgS
+gSwAAAAAQJcIZAEAAAAAuuT/AQ/cT5CXrPL9AAAAAElFTkSuQmCC
+"
+>
+</div>
+
+</div>
 
 <div class="output_area">
 <div class="prompt"></div>
@@ -16078,7 +16501,7 @@ $$[[t_0,t_1],...,[t_9,t_10]]$$</p>
               <span class="p">[</span><span class="mf">0.613033</span><span class="p">,</span> <span class="mf">0.281826</span><span class="p">,</span> <span class="mf">0.306352</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.450385</span><span class="p">,</span> <span class="mf">0.157961</span><span class="p">,</span> <span class="mf">0.217975</span><span class="p">]]</span>
 <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">weatherData</span><span class="p">:</span>
-    <span class="n">binsLow</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">year</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">year</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#find the bins for the given year</span>
+    <span class="n">binsLow</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">year</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">year</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> 
     <span class="n">binsHigh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">year</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">year</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
         
     
@@ -16095,7 +16518,8 @@ $$[[t_0,t_1],...,[t_9,t_10]]$$</p>
         <span class="n">image</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="mi">451</span><span class="p">]</span><span class="o">=</span><span class="n">binColours</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">digitizedHigh</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="p">)])]</span>
     <span class="n">printText</span><span class="p">(</span><span class="s2">&quot;&lt;h2&gt;Tempreture blanket for year: </span><span class="si">{}</span><span class="s2">&lt;/h2&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1995</span><span class="o">+</span><span class="mi">5</span><span class="o">*</span><span class="n">counter</span><span class="p">))</span>
     
-    <span class="n">displayHTML</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">binsLow</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="n">binsHigh</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">)))),</span> 
+    <span class="n">displayHTML</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">binsLow</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+                                              <span class="p">(</span><span class="n">binsHigh</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">)))),</span> 
                              <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Low bin&quot;</span><span class="p">,</span><span class="s2">&quot;High bin&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">to_html</span><span class="p">())</span>
     
     <span class="n">outputImage</span> <span class="o">=</span> <span class="n">smp</span><span class="o">.</span><span class="n">toimage</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
@@ -16597,11 +17021,15 @@ $$[[t_0,t_1],...,[t_9,t_10]]$$</p>
     <span class="n">stdDay</span><span class="p">[</span><span class="n">day</span><span class="p">]</span><span class="o">=</span><span class="n">dayArray</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="c1"># calculate the standard deviation</span>
 
 <span class="c1">#generate a linear space of all days in the region, for the min to max temp</span>
-<span class="n">tempretureSpace</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">meanDay</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">meanDay</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="nb">len</span><span class="p">(</span><span class="n">weatherData</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span><span class="mi">2</span><span class="p">]))</span>
+<span class="n">tempretureSpace</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">meanDay</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
+                            <span class="n">meanDay</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+                            <span class="nb">len</span><span class="p">(</span><span class="n">weatherData</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span><span class="mi">2</span><span class="p">]))</span>
 
 <span class="c1">#itterate over the days again, now generating the pdf</span>
 <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="n">dayRange</span><span class="p">:</span>
-    <span class="n">pdf</span><span class="p">[</span><span class="n">day</span><span class="p">,:]</span><span class="o">=</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">tempretureSpace</span><span class="p">,</span><span class="n">meanDay</span><span class="p">[</span><span class="n">day</span><span class="p">],</span><span class="n">stdDay</span><span class="p">[</span><span class="n">day</span><span class="p">])</span>
+    <span class="n">pdf</span><span class="p">[</span><span class="n">day</span><span class="p">,:]</span><span class="o">=</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">tempretureSpace</span><span class="p">,</span>
+                        <span class="n">meanDay</span><span class="p">[</span><span class="n">day</span><span class="p">],</span>
+                        <span class="n">stdDay</span><span class="p">[</span><span class="n">day</span><span class="p">])</span>
 
 <span class="c1">#convert the values to a meshgrid (return coordinate matrices from coordinate vectors)</span>
 <span class="n">tempretureSpace</span><span class="p">,</span> <span class="n">dayRange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">tempretureSpace</span><span class="p">,</span> <span class="n">dayRange</span><span class="p">)</span>
@@ -16609,7 +17037,11 @@ $$[[t_0,t_1],...,[t_9,t_10]]$$</p>
 <span class="c1">#finally, plot it as a 3d surf</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">gca</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
-<span class="n">surf</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">tempretureSpace</span><span class="p">,</span> <span class="n">dayRange</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">antialiased</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">surf</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">tempretureSpace</span><span class="p">,</span>
+                       <span class="n">dayRange</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span>
+                       <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span><span class="p">,</span>
+                       <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                       <span class="n">antialiased</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature (C)&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Days&#39;</span><span class="p">)</span>
@@ -16617,7 +17049,7 @@ $$[[t_0,t_1],...,[t_9,t_10]]$$</p>
 
 <span class="c1">#add a colour bar on the side to see magnitudes</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;surface plot of stochastic process&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Surface Plot of Stochastic Process&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 

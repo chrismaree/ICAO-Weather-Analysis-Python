@@ -1,0 +1,806 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{ELEN3007 Probabilistic System and Signal Assignment}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \section{ELEN3007
+ICAO-Codes-Weather-analysis}\label{elen3007-icao-codes-weather-analysis}
+
+\subparagraph{This Script imports the weather data for the Chulman
+Airport (UELL) weather station, in Russia and then answers question
+outlined.}\label{this-script-imports-the-weather-data-for-the-chulman-airport-uell-weather-station-in-russia-and-then-answers-question-outlined.}
+
+Each question that has a discussion of results is analised in the
+respective question markdown block before the code block.
+
+The Git repo, storing this code, can be seen here:
+https://github.com/SoIidarity/ICAO-Weather-Analysis-Python
+
+This main file, showing all code execution, can be seen here:
+https://github.com/SoIidarity/ICAO-Weather-Analysis-Python/blob/master/MainFile.ipynb
+\\
+
+Both a PDF version and HTML version of this report are included in this
+submission. For an optimal viewing experience, please view the HTML
+version as the formatting is persistent from the Jupyter notebook.
+\\
+
+Please note that this file was generated using the built in Jupyter notebook Latex export function. As a result, some graphics are not included and so to view all content presented in this report, please view the HTML version also included in the submission.
+\\
+
+    Import libraries and such needed for program execution.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        \PY{k+kn}{import} \PY{n+nn}{seaborn} \PY{k}{as} \PY{n+nn}{sns}
+        
+        \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
+        \PY{k+kn}{from} \PY{n+nn}{statsmodels}\PY{n+nn}{.}\PY{n+nn}{graphics}\PY{n+nn}{.}\PY{n+nn}{tsaplots} \PY{k}{import} \PY{n}{plot\PYZus{}acf}
+        
+        \PY{k+kn}{import} \PY{n+nn}{scipy}\PY{n+nn}{.}\PY{n+nn}{stats}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+        \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k}{import} \PY{n}{HTML}\PY{p}{,} \PY{n}{display}
+        
+        \PY{k+kn}{from} \PY{n+nn}{io} \PY{k}{import} \PY{n}{BytesIO}
+        \PY{k+kn}{from} \PY{n+nn}{base64} \PY{k}{import} \PY{n}{b64encode}
+        \PY{k+kn}{import} \PY{n+nn}{scipy}\PY{n+nn}{.}\PY{n+nn}{misc} \PY{k}{as} \PY{n+nn}{smp}
+        
+        \PY{k+kn}{from} \PY{n+nn}{mpl\PYZus{}toolkits}\PY{n+nn}{.}\PY{n+nn}{mplot3d} \PY{k}{import} \PY{n}{Axes3D}
+        \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k}{import} \PY{n}{cm}
+        \PY{k+kn}{from} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{ticker} \PY{k}{import} \PY{n}{LinearLocator}
+        \PY{k+kn}{from} \PY{n+nn}{scipy}\PY{n+nn}{.}\PY{n+nn}{stats} \PY{k}{import} \PY{n}{norm}
+        
+        \PY{n}{plt}\PY{o}{.}\PY{n}{rcParams}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{figure.figsize}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{24}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}
+\end{Verbatim}
+
+
+    First, define some useful functions. These are used in the printing of
+data later on.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k}{def} \PY{n+nf}{printMatrix}\PY{p}{(}\PY{n}{data}\PY{p}{)}\PY{p}{:}  \PY{c+c1}{\PYZsh{}used to print matricies to HTML}
+            \PY{n}{display}\PY{p}{(}\PY{n}{HTML}\PY{p}{(}
+                \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZlt{}table\PYZgt{}\PYZlt{}tr\PYZgt{}}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s1}{\PYZlt{}/tr\PYZgt{}\PYZlt{}/table\PYZgt{}}\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}
+                    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZlt{}/tr\PYZgt{}\PYZlt{}tr\PYZgt{}}\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}
+                        \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZlt{}td\PYZgt{}}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s1}{\PYZlt{}/td\PYZgt{}}\PY{l+s+s1}{\PYZsq{}}
+                        \PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZlt{}/td\PYZgt{}\PYZlt{}td\PYZgt{}}\PY{l+s+s1}{\PYZsq{}}
+                        \PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n+nb}{str}\PY{p}{(}\PY{n}{\PYZus{}}\PY{p}{)} \PY{k}{for} \PY{n}{\PYZus{}} \PY{o+ow}{in} \PY{n}{row}\PY{p}{)}\PY{p}{)} \PY{k}{for} \PY{n}{row} \PY{o+ow}{in} \PY{n}{data}\PY{p}{)}
+                \PY{p}{)}
+            \PY{p}{)}\PY{p}{)}
+        
+        \PY{k}{def} \PY{n+nf}{printText}\PY{p}{(}\PY{n}{text}\PY{p}{)}\PY{p}{:}
+            \PY{n}{display}\PY{p}{(}\PY{n}{HTML}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZlt{}p\PYZgt{}}\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{n}{text} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZlt{}p\PYZgt{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+        
+        \PY{k}{def} \PY{n+nf}{displayHTML}\PY{p}{(}\PY{n}{html}\PY{p}{)}\PY{p}{:}
+            \PY{n}{display}\PY{p}{(}\PY{n}{HTML}\PY{p}{(}\PY{n}{html}\PY{p}{)}\PY{p}{)}
+            
+        \PY{k}{def} \PY{n+nf}{drawImg}\PY{p}{(}\PY{n}{img}\PY{p}{)}\PY{p}{:}
+            \PY{n}{b} \PY{o}{=} \PY{n}{BytesIO}\PY{p}{(}\PY{p}{)}
+            \PY{n}{img}\PY{o}{.}\PY{n}{save}\PY{p}{(}\PY{n}{b}\PY{p}{,} \PY{n+nb}{format}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{png}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{n}{displayHTML}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}img src=}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{data:image/png;base64,}\PY{l+s+si}{\PYZob{}0\PYZcb{}}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{/\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}
+                        \PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{b64encode}\PY{p}{(}\PY{n}{b}\PY{o}{.}\PY{n}{getvalue}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{decode}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \subsection{Question 1}\label{question-1}
+
+Import data from text files. These are stored as csvs in the "Data"
+directory in the repo. This CSV is formatted as: \{Unit Timestamp, max
+Temp, avg Temp, min Temp\}. Each CSV is read into a matrix. These
+matricies are then added to a vector so they can be itterated through
+later on.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{w1995} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{genfromtxt}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Data/1995.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{delimiter}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{,}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{w2000} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{genfromtxt}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Data/2000.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{delimiter}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{,}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{w2005} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{genfromtxt}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Data/2005.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{delimiter}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{,}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{w2010} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{genfromtxt}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Data/2010.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{delimiter}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{,}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{w2015} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{genfromtxt}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Data/2015.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{delimiter}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{,}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{n}{weatherData} \PY{o}{=} \PY{p}{[}\PY{n}{w1995}\PY{p}{,} \PY{n}{w2000}\PY{p}{,} \PY{n}{w2005}\PY{p}{,} \PY{n}{w2010}\PY{p}{,} \PY{n}{w2015}\PY{p}{]}
+\end{Verbatim}
+
+    \subsection{Question 2}\label{question-2}
+
+Next, identify the minimum, maximum, mean and standard deviation for
+each year. As the matricies are in a vector, we can do this sequentially
+in a loop. These outputs are produced in a matrix, where the columns are
+the years (1995,2000,2005,2010,2015) and the rows are the minimum,
+maximum, mean and standard deviation for each year. This can be seen in
+the table below.
+
+\subsubsection{Comment on findings}\label{comment-on-findings}
+
+The minimum, maximum, mean and standard deviations are very similar for
+each year. this is to be expected as they were taken from the same
+location. However, as time went on over the past 20 years, it seems that
+the averages became walmer with both the maximums and minimums
+increasing over time. There are outlyers in this trend as seen in 2010's
+minimum tempreture. This trend is also verified by looking at the mean
+where each year is shown to be getting walmer.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{dataValues} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+        \PY{n}{counter} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{;}
+        \PY{k}{for} \PY{n}{year} \PY{o+ow}{in} \PY{n}{weatherData}\PY{p}{:}
+            \PY{n}{dataValues}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{counter}\PY{p}{]} \PY{o}{=} \PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}  \PY{c+c1}{\PYZsh{}max of max values}
+            \PY{n}{dataValues}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{counter}\PY{p}{]} \PY{o}{=} \PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}  \PY{c+c1}{\PYZsh{}min of min values}
+            \PY{n}{dataValues}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{counter}\PY{p}{]} \PY{o}{=} \PY{n+nb}{round}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}  \PY{c+c1}{\PYZsh{}average of average values}
+            \PY{n}{dataValues}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{,} \PY{n}{counter}\PY{p}{]} \PY{o}{=} \PY{n+nb}{round}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}  \PY{c+c1}{\PYZsh{}Standard deviation of average values}
+            \PY{n}{counter} \PY{o}{=} \PY{n}{counter} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{;}
+        \PY{c+c1}{\PYZsh{} printMatrix(dataValues)}
+        
+        
+        \PY{n}{displayHTML}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{dataValues}\PY{p}{,}
+                                 \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{1995}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2000}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2005}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2010}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2015}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}
+                                 \PY{n}{index}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Minimum}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Maximum}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Mean}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Standard Deviation}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+                                 \PY{p}{)}\PY{o}{.}\PY{n}{to\PYZus{}html}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+    \subsection{Question 3}\label{question-3}
+
+Each Years probability distribution functions are now plotted, for each
+year, on the same set of axes. To achive this, a fixed plot of
+univariate distributions is generated. This is done with the Seaborn
+displot function.
+
+\subsubsection{Comment on findings}\label{comment-on-findings}
+
+Each year has a similar general probobility distribution function. They
+apear to be close to normal in shape. general average trends can also be
+seen through this graph such as 2005 had higher distribution of both
+highs and lows, with a lower distribution in the middel. This indicates
+more extreme weather during this year.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{sns}\PY{o}{.}\PY{n}{set\PYZus{}style}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{whitegrid}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{counter} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{;}
+        \PY{k}{for} \PY{n}{year} \PY{o+ow}{in} \PY{n}{weatherData}\PY{p}{:}
+            \PY{n}{sns}\PY{o}{.}\PY{n}{distplot}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} \PY{n}{hist}\PY{o}{=}\PY{k+kc}{False}\PY{p}{,}
+                         \PY{n}{label}\PY{o}{=}\PY{l+m+mi}{1995} \PY{o}{+} \PY{n}{counter} \PY{o}{*} \PY{l+m+mi}{5}\PY{p}{,} 
+                         \PY{n}{axlabel}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Temperature (C)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{n}{counter} \PY{o}{=} \PY{n}{counter} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{;}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Probability Distribution Function}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_10_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection{Question 4}\label{question-4}
+
+The cross-correlation between each year's annual temperatures is now
+calculated. This is shown as a matrix output Note here that we are
+slicing the data on each year to ignore the leap year in 2000. This is
+done as the correlation needs matricies of the same dimension.
+
+Additionally note that we need to normalise the data. This is the same
+as using the numpy corrfoef function.
+
+\subsubsection{Comment on findings}\label{comment-on-findings}
+
+Through the cross-correlation of the presented data, one can see the
+relationship between each years weather. The closer these values are to
+1, the more closely correlated the data is. the highest correlation is
+seen between 2010 and 1995 intrestingly enough with a 94\% correlation.
+The main diagonal of 1's indicates the full correlation, with each year
+corelated against its self.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{autoCorrelation} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+        \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{:}
+            \PY{k}{for} \PY{n}{y} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{:}
+                \PY{n}{a} \PY{o}{=} \PY{n}{weatherData}\PY{p}{[}\PY{n}{x}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{:}\PY{l+m+mi}{365}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}
+                \PY{n}{b} \PY{o}{=} \PY{n}{weatherData}\PY{p}{[}\PY{n}{y}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{:}\PY{l+m+mi}{365}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}
+                \PY{n}{a} \PY{o}{=} \PY{p}{(}\PY{n}{a} \PY{o}{\PYZhy{}} \PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{a}\PY{p}{)}\PY{p}{)} \PY{o}{/} \PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{n}{a}\PY{p}{)} \PY{o}{*} \PY{n+nb}{len}\PY{p}{(}\PY{n}{a}\PY{p}{)}\PY{p}{)}
+                \PY{n}{b} \PY{o}{=} \PY{p}{(}\PY{n}{b} \PY{o}{\PYZhy{}} \PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{b}\PY{p}{)}\PY{p}{)} \PY{o}{/} \PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{n}{b}\PY{p}{)}\PY{p}{)}
+                \PY{n}{autoCorrelation}\PY{p}{[}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{]} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{correlate}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{)}
+                \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{1995}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2000}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2005}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2010}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2015}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+                \PY{n}{index}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{1995}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2000}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2005}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2010}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2015}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+        \PY{n}{displayHTML}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{autoCorrelation}\PY{p}{,}
+                                 \PY{n}{columns}\PY{p}{,}
+                                 \PY{n}{index}\PY{p}{)}\PY{o}{.}\PY{n}{to\PYZus{}html}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+    \subsection{Question 5}\label{question-5}
+
+The autocorrelation function for each year's data, where τ ranges from 0
+to 364 is now generated.
+
+Confidence intervals are drawn as a cone. By default, this is set to a
+95\% confidence interval, suggesting that correlation values outside of
+this code are very likely a correlation and not a statistical fluke.
+
+First, each Autocorrelation is drawn on its own graph. After, They are
+overlayed.
+
+\subsubsection{Comment on findings}\label{comment-on-findings}
+
+This autocorrelation shows how each year is related to a time-shifted
+version of itself. This can be seen as an effective convolution process.
+From this, one can see how each part of the year is related to the rest
+of the year for a given shift amount τ. For example, at τ=0, the
+magnitude is 1. At this time, no shifting has occurred. At approximately
+τ=150, there is the highest negative correlation seen. This is due to
+the correlation between the middle of summer and winter of the two data
+sets.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{counter} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{;}
+         \PY{k}{for} \PY{n}{year} \PY{o+ow}{in} \PY{n}{weatherData}\PY{p}{:}
+         
+             \PY{k}{if} \PY{p}{(}\PY{n}{counter} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{:}  \PY{c+c1}{\PYZsh{}on the first loop, generate the subplots}
+                 \PY{n}{fig}\PY{p}{,} \PY{n}{axs} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+             \PY{k}{if} \PY{n}{counter} \PY{o}{==} \PY{l+m+mi}{4}\PY{p}{:}  \PY{c+c1}{\PYZsh{} if we are at the last figure, we want it to be on its own line}
+                 \PY{n}{plot\PYZus{}acf}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} 
+                          \PY{n}{title}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Autocorrelation for }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}
+                          \PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{l+m+mi}{1995} \PY{o}{+} \PY{l+m+mi}{5} \PY{o}{*} \PY{n}{counter}\PY{p}{)}\PY{p}{)}
+                 \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+             \PY{k}{else}\PY{p}{:}
+                 \PY{n}{plot\PYZus{}acf}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} 
+                          \PY{n}{title}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Autocorrelation for }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}
+                          \PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{l+m+mi}{1995} \PY{o}{+} \PY{l+m+mi}{5} \PY{o}{*} \PY{n}{counter}\PY{p}{)}\PY{p}{,} 
+                          \PY{n}{ax}\PY{o}{=}\PY{n}{axs}\PY{p}{[}\PY{n}{counter} \PY{o}{\PYZpc{}} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}
+             \PY{k}{if} \PY{n}{counter} \PY{o}{\PYZpc{}} \PY{l+m+mi}{2} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}  \PY{c+c1}{\PYZsh{} every two figures, we need to generate a new row}
+                 \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+                 \PY{k}{if} \PY{p}{(}\PY{n}{counter} \PY{o}{\PYZlt{}} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{:}  \PY{c+c1}{\PYZsh{}a new sub plot is needed on second row}
+                     \PY{n}{fig}\PY{p}{,} \PY{n}{axs} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+             \PY{n}{counter} \PY{o}{=} \PY{n}{counter} \PY{o}{+} \PY{l+m+mi}{1}    
+         
+         \PY{n}{counter}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{;}
+         \PY{n}{fig}\PY{p}{,} \PY{n}{axs} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+         \PY{k}{for} \PY{n}{year} \PY{o+ow}{in} \PY{n}{weatherData}\PY{p}{:}
+             
+             \PY{n}{plot\PYZus{}acf}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,}
+                      \PY{n}{title}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Autocorrelation All 5 years together}\PY{l+s+s2}{\PYZdq{}}
+                      \PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{l+m+mi}{1995} \PY{o}{+} \PY{l+m+mi}{5} \PY{o}{*} \PY{n}{counter}\PY{p}{)}\PY{p}{,} 
+                      \PY{n}{ax}\PY{o}{=}\PY{n}{axs}\PY{p}{,}
+                      \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{hello}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_14_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_14_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_14_2.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_14_3.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_14_4.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection{Question 6.a \&6.b}\label{question-6.a-6.b}
+
+Next, each year, temp is broken down into subdivisions in the range:
+\[[minimum-0.1=t_0,maximum+0.1=t_10]\] into ten equal intervals. This is
+then used to generate 10 intervals, as: \[[[t_0,t_1],...,[t_9,t_10]]\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  binCorours are predefined RGB values, given in the question
+\item
+  The linspace function below is used to generate a set of numbers with
+  equal distributions between the min and max data for each year.
+\item
+  Digitisation is used to put the data into the respective buckets. This
+  can then be used later on when the graphs are drawn
+\item
+  generate a matrix to store the image colour values
+\item
+  iterate over each day of the year*2. double as we need to have two
+  rows for each day(high and low)
+\item
+  set the current iteration-1 row of pixels to the low digitised index
+  value from colour matrix provided.
+\item
+  same as above, but for the current iterator for the high values
+  provided
+\item
+  convert matrix to image
+\item
+  draw image to screen
+\end{enumerate}
+
+The output below this code shows first the bins for each year, for
+question 6.a. Then, the blankets are drawn for question 6.b
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{binColours} \PY{o}{=} \PY{p}{[}\PY{p}{[}\PY{l+m+mf}{0.139681}\PY{p}{,} \PY{l+m+mf}{0.311666}\PY{p}{,} \PY{l+m+mf}{0.550652}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mf}{0.276518}\PY{p}{,} \PY{l+m+mf}{0.539432}\PY{p}{,} \PY{l+m+mf}{0.720771}\PY{p}{]}\PY{p}{,}
+                      \PY{p}{[}\PY{l+m+mf}{0.475102}\PY{p}{,} \PY{l+m+mf}{0.695344}\PY{p}{,} \PY{l+m+mf}{0.802081}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mf}{0.670448}\PY{p}{,} \PY{l+m+mf}{0.803486}\PY{p}{,} \PY{l+m+mf}{0.824645}\PY{p}{]}\PY{p}{,}
+                      \PY{p}{[}\PY{l+m+mf}{0.809791}\PY{p}{,} \PY{l+m+mf}{0.848259}\PY{p}{,} \PY{l+m+mf}{0.777550}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mf}{0.861927}\PY{p}{,} \PY{l+m+mf}{0.803423}\PY{p}{,} \PY{l+m+mf}{0.673050}\PY{p}{]}\PY{p}{,}
+                      \PY{p}{[}\PY{l+m+mf}{0.830690}\PY{p}{,} \PY{l+m+mf}{0.667645}\PY{p}{,} \PY{l+m+mf}{0.546349}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mf}{0.742023}\PY{p}{,} \PY{l+m+mf}{0.475176}\PY{p}{,} \PY{l+m+mf}{0.424114}\PY{p}{]}\PY{p}{,}
+                      \PY{p}{[}\PY{l+m+mf}{0.613033}\PY{p}{,} \PY{l+m+mf}{0.281826}\PY{p}{,} \PY{l+m+mf}{0.306352}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mf}{0.450385}\PY{p}{,} \PY{l+m+mf}{0.157961}\PY{p}{,} \PY{l+m+mf}{0.217975}\PY{p}{]}\PY{p}{]}
+        \PY{n}{counter} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{;}
+        \PY{k}{for} \PY{n}{year} \PY{o+ow}{in} \PY{n}{weatherData}\PY{p}{:}
+            \PY{n}{binsLow} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.1}\PY{p}{,} \PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}\PY{o}{+}\PY{l+m+mf}{0.1}\PY{p}{,} \PY{n}{num}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)} 
+            \PY{n}{binsHigh} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.1}\PY{p}{,} \PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}\PY{o}{+}\PY{l+m+mf}{0.1}\PY{p}{,} \PY{n}{num}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)}
+                
+            
+            
+            
+            \PY{n}{digitizedLow}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,}\PY{n}{binsLow}\PY{p}{)} \PY{c+c1}{\PYZsh{}put the data into the bins}
+            \PY{n}{digitizedHigh}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,}\PY{n}{binsHigh}\PY{p}{)}
+            
+            \PY{n}{rows}\PY{o}{=} \PY{l+m+mi}{2}\PY{o}{*}\PY{n+nb}{len}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}
+            \PY{n}{image} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{n}{rows}\PY{p}{,} \PY{l+m+mi}{451}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{)}  \PY{c+c1}{\PYZsh{}make a matrix to store the image}
+        
+            \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{rows}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{:} \PY{c+c1}{\PYZsh{}itterate over each year\PYZsq{}s values from the above values and set pixels colours}
+                \PY{n}{image}\PY{p}{[}\PY{n}{x}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{:}\PY{l+m+mi}{451}\PY{p}{]}\PY{o}{=}\PY{n}{binColours}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{digitizedLow}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{x}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{p}{]}
+                \PY{n}{image}\PY{p}{[}\PY{n}{x}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{:}\PY{l+m+mi}{451}\PY{p}{]}\PY{o}{=}\PY{n}{binColours}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{digitizedHigh}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{x}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{p}{]}
+            \PY{n}{printText}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}h2\PYZgt{}Tempreture blanket for year: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZlt{}/h2\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{l+m+mi}{1995}\PY{o}{+}\PY{l+m+mi}{5}\PY{o}{*}\PY{n}{counter}\PY{p}{)}\PY{p}{)}
+            
+            \PY{n}{displayHTML}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{column\PYZus{}stack}\PY{p}{(}\PY{p}{(}\PY{n}{binsLow}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,}
+                                                      \PY{p}{(}\PY{n}{binsHigh}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{,} 
+                                     \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Low bin}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{High bin}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{to\PYZus{}html}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+            
+            \PY{n}{outputImage} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{toimage}\PY{p}{(}\PY{n}{image}\PY{p}{)}
+            \PY{n}{outputImage}\PY{o}{.}\PY{n}{save}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{WeatherBlancketsOutput/}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s1}{.png}\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{l+m+mi}{1995}\PY{o}{+}\PY{l+m+mi}{5}\PY{o}{*}\PY{n}{counter}\PY{p}{)}\PY{p}{)}
+            \PY{n}{drawImg}\PY{p}{(}\PY{n}{outputImage}\PY{p}{)} \PY{c+c1}{\PYZsh{}Draw image to screen, using custom draw function to put output in window}
+            \PY{n}{counter}\PY{o}{=}\PY{n}{counter}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{;}
+\end{Verbatim}
+
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+    \subsection{Question 7}\label{question-7}
+
+Next, a surface plot of a stochastic process is generated. For this,
+avarages are generated over all 5 sets of data for each year, as well as
+a standard diviation for each day. Next, a linear space is generated
+representing the posible tempreture ranges. finally, the PDF is found
+then plotted in 3D.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{rcParams}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{figure.figsize}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{24}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)} \PY{c+c1}{\PYZsh{}Make the figure for this question bigger}
+        
+        \PY{c+c1}{\PYZsh{}define the variables to store the mean, std deviation, range for each day(temp), pdfs and a vector for number of days}
+        \PY{n}{meanDay}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{365}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+        \PY{n}{stdDay}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{365}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+        \PY{n}{dayArray}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+        \PY{n}{pdf}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{365}\PY{p}{,}\PY{l+m+mi}{365}\PY{p}{)}\PY{p}{)}
+        \PY{n}{dayRange}\PY{o}{=}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{365}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}
+        
+        \PY{k}{for} \PY{n}{day} \PY{o+ow}{in} \PY{n}{dayRange}\PY{p}{:}
+            \PY{k}{for} \PY{n}{inx}\PY{p}{,} \PY{n}{year} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{weatherData}\PY{p}{)}\PY{p}{:}
+                \PY{n}{dayArray}\PY{p}{[}\PY{n}{inx}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{=}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{[}\PY{n}{day}\PY{p}{]}
+            \PY{n}{meanDay}\PY{p}{[}\PY{n}{day}\PY{p}{]}\PY{o}{=}\PY{n}{dayArray}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)} \PY{c+c1}{\PYZsh{}calculate the mean}
+            \PY{n}{stdDay}\PY{p}{[}\PY{n}{day}\PY{p}{]}\PY{o}{=}\PY{n}{dayArray}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{p}{)} \PY{c+c1}{\PYZsh{} calculate the standard deviation}
+        
+        \PY{c+c1}{\PYZsh{}generate a linear space of all days in the region, for the min to max temp}
+        \PY{n}{tempretureSpace}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{n}{meanDay}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{,}
+                                    \PY{n}{meanDay}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}\PY{p}{,}
+                                    \PY{n+nb}{len}\PY{p}{(}\PY{n}{weatherData}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}itterate over the days again, now generating the pdf}
+        \PY{k}{for} \PY{n}{day} \PY{o+ow}{in} \PY{n}{dayRange}\PY{p}{:}
+            \PY{n}{pdf}\PY{p}{[}\PY{n}{day}\PY{p}{,}\PY{p}{:}\PY{p}{]}\PY{o}{=}\PY{n}{norm}\PY{o}{.}\PY{n}{pdf}\PY{p}{(}\PY{n}{tempretureSpace}\PY{p}{,}
+                                \PY{n}{meanDay}\PY{p}{[}\PY{n}{day}\PY{p}{]}\PY{p}{,}
+                                \PY{n}{stdDay}\PY{p}{[}\PY{n}{day}\PY{p}{]}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}convert the values to a meshgrid (return coordinate matrices from coordinate vectors)}
+        \PY{n}{tempretureSpace}\PY{p}{,} \PY{n}{dayRange} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{meshgrid}\PY{p}{(}\PY{n}{tempretureSpace}\PY{p}{,} \PY{n}{dayRange}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}finally, plot it as a 3d surf}
+        \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{p}{)}
+        \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{gca}\PY{p}{(}\PY{n}{projection}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{3d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{surf} \PY{o}{=} \PY{n}{ax}\PY{o}{.}\PY{n}{plot\PYZus{}surface}\PY{p}{(}\PY{n}{tempretureSpace}\PY{p}{,}
+                               \PY{n}{dayRange}\PY{p}{,} \PY{n}{pdf}\PY{p}{,}
+                               \PY{n}{cmap}\PY{o}{=}\PY{n}{cm}\PY{o}{.}\PY{n}{coolwarm}\PY{p}{,}
+                               \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{,}
+                               \PY{n}{antialiased}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+        
+        \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Temperature (C)}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Days}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}zlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{f(x)}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}add a colour bar on the side to see magnitudes}
+        \PY{n}{fig}\PY{o}{.}\PY{n}{colorbar}\PY{p}{(}\PY{n}{surf}\PY{p}{,} \PY{n}{shrink}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{aspect}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Surface Plot of Stochastic Process}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_18_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
