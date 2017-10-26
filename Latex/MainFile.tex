@@ -141,7 +141,7 @@
     \def\gt{>}
     \def\lt{<}
     % Document parameters
-    \title{ELEN3007 Probabilistic System and Signal Assignment}
+    \title{ELEN3007 - Probabilistic Systems Analysis Assignment}
     
     
     
@@ -290,49 +290,50 @@ outlined.}\label{this-script-imports-the-weather-data-for-the-chulman-airport-ue
 Each question that has a discussion of results is analised in the
 respective question markdown block before the code block.
 
-The Git repo, storing this code, can be seen here:
-https://github.com/SoIidarity/ICAO-Weather-Analysis-Python
-
-This main file, showing all code execution, can be seen here:
-https://github.com/SoIidarity/ICAO-Weather-Analysis-Python/blob/master/MainFile.ipynb
 \\
+The Git repo, storing this code, can be seen here:
 
+https://github.com/SoIidarity/ICAO-Weather-Analysis-Python This main
+file, showing all code execution, can be seen here:
+
+https://github.com/SoIidarity/ICAO-Weather-Analysis-Python/blob/master/MainFile.ipynb
+
+\\
 Both a PDF version and HTML version of this report are included in this
 submission. For an optimal viewing experience, please view the HTML
 version as the formatting is persistent from the Jupyter notebook.
+Additionally, the PDF version has HTML elements stripped out, such as
+some images. Alternativly, view the second Git link above to view the
+notebook online, through Github.
 \\
 
-Please note that this file was generated using the built in Jupyter notebook Latex export function. As a result, some graphics are not included and so to view all content presented in this report, please view the HTML version also included in the submission.
-\\
-
-    Import libraries and such needed for program execution.
+    First, Import libraries and such needed for program execution.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
-        \PY{k+kn}{import} \PY{n+nn}{seaborn} \PY{k}{as} \PY{n+nn}{sns}
-        
-        \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
-        \PY{k+kn}{from} \PY{n+nn}{statsmodels}\PY{n+nn}{.}\PY{n+nn}{graphics}\PY{n+nn}{.}\PY{n+nn}{tsaplots} \PY{k}{import} \PY{n}{plot\PYZus{}acf}
-        
-        \PY{k+kn}{import} \PY{n+nn}{scipy}\PY{n+nn}{.}\PY{n+nn}{stats}
-        \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
-        \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k}{import} \PY{n}{HTML}\PY{p}{,} \PY{n}{display}
-        
-        \PY{k+kn}{from} \PY{n+nn}{io} \PY{k}{import} \PY{n}{BytesIO}
-        \PY{k+kn}{from} \PY{n+nn}{base64} \PY{k}{import} \PY{n}{b64encode}
-        \PY{k+kn}{import} \PY{n+nn}{scipy}\PY{n+nn}{.}\PY{n+nn}{misc} \PY{k}{as} \PY{n+nn}{smp}
-        
-        \PY{k+kn}{from} \PY{n+nn}{mpl\PYZus{}toolkits}\PY{n+nn}{.}\PY{n+nn}{mplot3d} \PY{k}{import} \PY{n}{Axes3D}
-        \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k}{import} \PY{n}{cm}
-        \PY{k+kn}{from} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{ticker} \PY{k}{import} \PY{n}{LinearLocator}
-        \PY{k+kn}{from} \PY{n+nn}{scipy}\PY{n+nn}{.}\PY{n+nn}{stats} \PY{k}{import} \PY{n}{norm}
-        
-        \PY{n}{plt}\PY{o}{.}\PY{n}{rcParams}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{figure.figsize}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{24}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}10}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+         \PY{k+kn}{import} \PY{n+nn}{seaborn} \PY{k}{as} \PY{n+nn}{sns}
+         
+         \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
+         \PY{k+kn}{from} \PY{n+nn}{statsmodels}\PY{n+nn}{.}\PY{n+nn}{graphics}\PY{n+nn}{.}\PY{n+nn}{tsaplots} \PY{k}{import} \PY{n}{plot\PYZus{}acf}
+         
+         \PY{k+kn}{import} \PY{n+nn}{scipy}\PY{n+nn}{.}\PY{n+nn}{stats}
+         \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+         \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k}{import} \PY{n}{HTML}\PY{p}{,} \PY{n}{display}
+         
+         \PY{k+kn}{from} \PY{n+nn}{io} \PY{k}{import} \PY{n}{BytesIO}
+         \PY{k+kn}{from} \PY{n+nn}{base64} \PY{k}{import} \PY{n}{b64encode}
+         \PY{k+kn}{import} \PY{n+nn}{scipy}\PY{n+nn}{.}\PY{n+nn}{misc} \PY{k}{as} \PY{n+nn}{smp}
+         
+         \PY{k+kn}{from} \PY{n+nn}{mpl\PYZus{}toolkits}\PY{n+nn}{.}\PY{n+nn}{mplot3d} \PY{k}{import} \PY{n}{Axes3D}
+         \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k}{import} \PY{n}{cm}
+         \PY{k+kn}{from} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{ticker} \PY{k}{import} \PY{n}{LinearLocator}
+         \PY{k+kn}{from} \PY{n+nn}{scipy}\PY{n+nn}{.}\PY{n+nn}{stats} \PY{k}{import} \PY{n}{norm}
+         
+         \PY{n}{plt}\PY{o}{.}\PY{n}{rcParams}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{figure.figsize}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{26}\PY{p}{,} \PY{l+m+mi}{13}\PY{p}{)}
 \end{Verbatim}
 
-
     First, define some useful functions. These are used in the printing of
-data later on.
+data later on. Also used for rendering images to the HTML page.
 
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}2}]:} \PY{k}{def} \PY{n+nf}{printMatrix}\PY{p}{(}\PY{n}{data}\PY{p}{)}\PY{p}{:}  \PY{c+c1}{\PYZsh{}used to print matricies to HTML}
@@ -385,6 +386,13 @@ the years (1995,2000,2005,2010,2015) and the rows are the minimum,
 maximum, mean and standard deviation for each year. This can be seen in
 the table below.
 
+The mean is calculated with the standard numpy mean equation that
+calculates the following. This is the average of the data set:
+\[\bar{x} = \frac{1}{n}\left (\sum_{i=1}^n{x_i}\right ) = \frac{x_1+x_2+\cdots +x_n}{n}\]
+
+Standard deviation is used to quantify variance in the data, as defined
+by: \[s = \sqrt{\frac{\sum_{i=1}^N (x_i - \overline{x})^2}{N-1} }\]
+
 \subsubsection{Comment on findings}\label{comment-on-findings}
 
 The minimum, maximum, mean and standard deviations are very similar for
@@ -395,6 +403,10 @@ increasing over time. There are outlyers in this trend as seen in 2010's
 minimum tempreture. This trend is also verified by looking at the mean
 where each year is shown to be getting walmer.
 
+The high standard deviation seen is accounted for by the large
+tempreture changes during the course of the year. A delta between the
+maximum of 37 and minimum of -45 of 82 degrees is rather high.
+
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}4}]:} \PY{n}{dataValues} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
         \PY{n}{counter} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{;}
@@ -404,13 +416,13 @@ where each year is shown to be getting walmer.
             \PY{n}{dataValues}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{counter}\PY{p}{]} \PY{o}{=} \PY{n+nb}{round}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}  \PY{c+c1}{\PYZsh{}average of average values}
             \PY{n}{dataValues}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{,} \PY{n}{counter}\PY{p}{]} \PY{o}{=} \PY{n+nb}{round}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}  \PY{c+c1}{\PYZsh{}Standard deviation of average values}
             \PY{n}{counter} \PY{o}{=} \PY{n}{counter} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{;}
-        \PY{c+c1}{\PYZsh{} printMatrix(dataValues)}
+        
+        
         
         
         \PY{n}{displayHTML}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{dataValues}\PY{p}{,}
-                                 \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{1995}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2000}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2005}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2010}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2015}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}
-                                 \PY{n}{index}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Minimum}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Maximum}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Mean}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Standard Deviation}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
-                                 \PY{p}{)}\PY{o}{.}\PY{n}{to\PYZus{}html}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+                                 \PY{n}{columns} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{1995}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2000}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2005}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2010}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2015}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}
+                                 \PY{n}{index} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Minimum}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Maximum}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Mean}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Standard Deviation}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{to\PYZus{}html}\PY{p}{(}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
     
@@ -426,6 +438,10 @@ year, on the same set of axes. To achive this, a fixed plot of
 univariate distributions is generated. This is done with the Seaborn
 displot function.
 
+This value is calculated by using the seaborn distplot function that
+recreates the standard PDF equation as:
+\[\operatorname{E}[X] = \int_{-\infty}^\infty x\,f(x)\,dx\]
+
 \subsubsection{Comment on findings}\label{comment-on-findings}
 
 Each year has a similar general probobility distribution function. They
@@ -439,7 +455,7 @@ more extreme weather during this year.
         \PY{n}{counter} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{;}
         \PY{k}{for} \PY{n}{year} \PY{o+ow}{in} \PY{n}{weatherData}\PY{p}{:}
             \PY{n}{sns}\PY{o}{.}\PY{n}{distplot}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} \PY{n}{hist}\PY{o}{=}\PY{k+kc}{False}\PY{p}{,}
-                         \PY{n}{label}\PY{o}{=}\PY{l+m+mi}{1995} \PY{o}{+} \PY{n}{counter} \PY{o}{*} \PY{l+m+mi}{5}\PY{p}{,} 
+                         \PY{n}{label}\PY{o}{=}\PY{l+m+mi}{1995} \PY{o}{+} \PY{n}{counter} \PY{o}{*} \PY{l+m+mi}{5}\PY{p}{,}  
                          \PY{n}{axlabel}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Temperature (C)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
             \PY{n}{counter} \PY{o}{=} \PY{n}{counter} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{;}
         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Probability Distribution Function}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
@@ -461,11 +477,16 @@ done as the correlation needs matricies of the same dimension.
 Additionally note that we need to normalise the data. This is the same
 as using the numpy corrfoef function.
 
+TO calculate this, the numpy correlate function was used. This function
+makes use of this equation:
+
+\[(f \star g)(\tau)\ \stackrel{\mathrm{def}}{=} \int_{-\infty}^{\infty} f^*(t)\ g(t+\tau)\,dt\]
+
 \subsubsection{Comment on findings}\label{comment-on-findings}
 
 Through the cross-correlation of the presented data, one can see the
 relationship between each years weather. The closer these values are to
-1, the more closely correlated the data is. the highest correlation is
+1, the more closely correlated the data is. The highest correlation is
 seen between 2010 and 1995 intrestingly enough with a 94\% correlation.
 The main diagonal of 1's indicates the full correlation, with each year
 corelated against its self.
@@ -479,11 +500,10 @@ corelated against its self.
                 \PY{n}{a} \PY{o}{=} \PY{p}{(}\PY{n}{a} \PY{o}{\PYZhy{}} \PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{a}\PY{p}{)}\PY{p}{)} \PY{o}{/} \PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{n}{a}\PY{p}{)} \PY{o}{*} \PY{n+nb}{len}\PY{p}{(}\PY{n}{a}\PY{p}{)}\PY{p}{)}
                 \PY{n}{b} \PY{o}{=} \PY{p}{(}\PY{n}{b} \PY{o}{\PYZhy{}} \PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{b}\PY{p}{)}\PY{p}{)} \PY{o}{/} \PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{n}{b}\PY{p}{)}\PY{p}{)}
                 \PY{n}{autoCorrelation}\PY{p}{[}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{]} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{correlate}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{)}
-                \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{1995}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2000}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2005}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2010}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2015}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
-                \PY{n}{index}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{1995}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2000}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2005}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2010}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2015}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
-        \PY{n}{displayHTML}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{autoCorrelation}\PY{p}{,}
-                                 \PY{n}{columns}\PY{p}{,}
-                                 \PY{n}{index}\PY{p}{)}\PY{o}{.}\PY{n}{to\PYZus{}html}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+        \PY{n}{columns} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{1995}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2000}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2005}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2010}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2015}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+        \PY{n}{index} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{1995}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2000}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2005}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2010}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2015}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+        
+        \PY{n}{displayHTML}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{autoCorrelation}\PY{p}{,} \PY{n}{columns}\PY{p}{,} \PY{n}{index}\PY{p}{)}\PY{o}{.}\PY{n}{to\PYZus{}html}\PY{p}{(}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
     
@@ -501,8 +521,14 @@ Confidence intervals are drawn as a cone. By default, this is set to a
 95\% confidence interval, suggesting that correlation values outside of
 this code are very likely a correlation and not a statistical fluke.
 
-First, each Autocorrelation is drawn on its own graph. After, They are
+First, each Autocorrelation is drawn on its own graph. After, they are
 overlayed.
+
+Autocorrelation is found through the use of the plot\_acf function from
+the tsaplots statistics library. From a signal processing point of view,
+this can be seen as:
+
+\[R_{ff}(\tau) = (f * g_{-1}(\overline{f}))(\tau) = \int_{-\infty}^\infty f(u+\tau)\overline{f}(u)\, {\rm d}u = \int_{-\infty}^\infty f(u)\overline{f}(u-\tau)\, {\rm d}u\]
 
 \subsubsection{Comment on findings}\label{comment-on-findings}
 
@@ -516,37 +542,38 @@ the correlation between the middle of summer and winter of the two data
 sets.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{counter} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{;}
-         \PY{k}{for} \PY{n}{year} \PY{o+ow}{in} \PY{n}{weatherData}\PY{p}{:}
-         
-             \PY{k}{if} \PY{p}{(}\PY{n}{counter} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{:}  \PY{c+c1}{\PYZsh{}on the first loop, generate the subplots}
-                 \PY{n}{fig}\PY{p}{,} \PY{n}{axs} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
-             \PY{k}{if} \PY{n}{counter} \PY{o}{==} \PY{l+m+mi}{4}\PY{p}{:}  \PY{c+c1}{\PYZsh{} if we are at the last figure, we want it to be on its own line}
-                 \PY{n}{plot\PYZus{}acf}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} 
-                          \PY{n}{title}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Autocorrelation for }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}
-                          \PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{l+m+mi}{1995} \PY{o}{+} \PY{l+m+mi}{5} \PY{o}{*} \PY{n}{counter}\PY{p}{)}\PY{p}{)}
-                 \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
-             \PY{k}{else}\PY{p}{:}
-                 \PY{n}{plot\PYZus{}acf}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} 
-                          \PY{n}{title}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Autocorrelation for }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}
-                          \PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{l+m+mi}{1995} \PY{o}{+} \PY{l+m+mi}{5} \PY{o}{*} \PY{n}{counter}\PY{p}{)}\PY{p}{,} 
-                          \PY{n}{ax}\PY{o}{=}\PY{n}{axs}\PY{p}{[}\PY{n}{counter} \PY{o}{\PYZpc{}} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}
-             \PY{k}{if} \PY{n}{counter} \PY{o}{\PYZpc{}} \PY{l+m+mi}{2} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}  \PY{c+c1}{\PYZsh{} every two figures, we need to generate a new row}
-                 \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
-                 \PY{k}{if} \PY{p}{(}\PY{n}{counter} \PY{o}{\PYZlt{}} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{:}  \PY{c+c1}{\PYZsh{}a new sub plot is needed on second row}
-                     \PY{n}{fig}\PY{p}{,} \PY{n}{axs} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
-             \PY{n}{counter} \PY{o}{=} \PY{n}{counter} \PY{o}{+} \PY{l+m+mi}{1}    
-         
-         \PY{n}{counter}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{;}
-         \PY{n}{fig}\PY{p}{,} \PY{n}{axs} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
-         \PY{k}{for} \PY{n}{year} \PY{o+ow}{in} \PY{n}{weatherData}\PY{p}{:}
-             
-             \PY{n}{plot\PYZus{}acf}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,}
-                      \PY{n}{title}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Autocorrelation All 5 years together}\PY{l+s+s2}{\PYZdq{}}
-                      \PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{l+m+mi}{1995} \PY{o}{+} \PY{l+m+mi}{5} \PY{o}{*} \PY{n}{counter}\PY{p}{)}\PY{p}{,} 
-                      \PY{n}{ax}\PY{o}{=}\PY{n}{axs}\PY{p}{,}
-                      \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{hello}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n}{counter} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{;}
+        \PY{k}{for} \PY{n}{year} \PY{o+ow}{in} \PY{n}{weatherData}\PY{p}{:}
+        
+            \PY{k}{if} \PY{p}{(}\PY{n}{counter} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{:}  \PY{c+c1}{\PYZsh{}on the first loop, generate the subplots}
+                \PY{n}{fig}\PY{p}{,} \PY{n}{axs} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+            
+            \PY{k}{if} \PY{n}{counter} \PY{o}{==} \PY{l+m+mi}{4}\PY{p}{:}  \PY{c+c1}{\PYZsh{} if we are at the last figure, we want it to be on its own line}
+                \PY{n}{plot\PYZus{}acf}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} 
+                         \PY{n}{title} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Autocorrelation for }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}
+                         \PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{l+m+mi}{1995} \PY{o}{+} \PY{l+m+mi}{5} \PY{o}{*} \PY{n}{counter}\PY{p}{)}\PY{p}{)}
+                \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+            \PY{k}{else}\PY{p}{:}
+                \PY{n}{plot\PYZus{}acf}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} 
+                         \PY{n}{title} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Autocorrelation for }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}
+                         \PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{l+m+mi}{1995} \PY{o}{+} \PY{l+m+mi}{5} \PY{o}{*} \PY{n}{counter}\PY{p}{)}\PY{p}{,} 
+                         \PY{n}{ax}\PY{o}{=}\PY{n}{axs}\PY{p}{[}\PY{n}{counter} \PY{o}{\PYZpc{}} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}
+            \PY{k}{if} \PY{n}{counter} \PY{o}{\PYZpc{}} \PY{l+m+mi}{2} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}  \PY{c+c1}{\PYZsh{} every two figures, we need to generate a new row}
+                \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+                \PY{k}{if} \PY{p}{(}\PY{n}{counter} \PY{o}{\PYZlt{}} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{:}  \PY{c+c1}{\PYZsh{}a new sub plot is needed on second row}
+                    \PY{n}{fig}\PY{p}{,} \PY{n}{axs} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+            \PY{n}{counter} \PY{o}{=} \PY{n}{counter} \PY{o}{+} \PY{l+m+mi}{1}
+        
+        \PY{n}{counter} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{;}
+        \PY{n}{fig}\PY{p}{,} \PY{n}{axs} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+        \PY{k}{for} \PY{n}{year} \PY{o+ow}{in} \PY{n}{weatherData}\PY{p}{:}
+            
+            \PY{n}{plot\PYZus{}acf}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} 
+                     \PY{n}{title} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Autocorrelation All 5 years together}\PY{l+s+s2}{\PYZdq{}}
+                     \PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{l+m+mi}{1995} \PY{o}{+} \PY{l+m+mi}{5} \PY{o}{*} \PY{n}{counter}\PY{p}{)}\PY{p}{,}
+                    \PY{n}{ax}\PY{o}{=}\PY{n}{axs}\PY{p}{)}
+        
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
     \begin{center}
@@ -566,11 +593,6 @@ sets.
     
     \begin{center}
     \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_14_3.png}
-    \end{center}
-    { \hspace*{\fill} \\}
-    
-    \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_14_4.png}
     \end{center}
     { \hspace*{\fill} \\}
     
@@ -619,31 +641,29 @@ question 6.a. Then, the blankets are drawn for question 6.b
                       \PY{p}{[}\PY{l+m+mf}{0.613033}\PY{p}{,} \PY{l+m+mf}{0.281826}\PY{p}{,} \PY{l+m+mf}{0.306352}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mf}{0.450385}\PY{p}{,} \PY{l+m+mf}{0.157961}\PY{p}{,} \PY{l+m+mf}{0.217975}\PY{p}{]}\PY{p}{]}
         \PY{n}{counter} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{;}
         \PY{k}{for} \PY{n}{year} \PY{o+ow}{in} \PY{n}{weatherData}\PY{p}{:}
-            \PY{n}{binsLow} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.1}\PY{p}{,} \PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}\PY{o}{+}\PY{l+m+mf}{0.1}\PY{p}{,} \PY{n}{num}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)} 
-            \PY{n}{binsHigh} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.1}\PY{p}{,} \PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}\PY{o}{+}\PY{l+m+mf}{0.1}\PY{p}{,} \PY{n}{num}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)}
-                
-            
-            
-            
-            \PY{n}{digitizedLow}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,}\PY{n}{binsLow}\PY{p}{)} \PY{c+c1}{\PYZsh{}put the data into the bins}
-            \PY{n}{digitizedHigh}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,}\PY{n}{binsHigh}\PY{p}{)}
-            
-            \PY{n}{rows}\PY{o}{=} \PY{l+m+mi}{2}\PY{o}{*}\PY{n+nb}{len}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}
-            \PY{n}{image} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{n}{rows}\PY{p}{,} \PY{l+m+mi}{451}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{)}  \PY{c+c1}{\PYZsh{}make a matrix to store the image}
+            \PY{n}{num} \PY{o}{=} \PY{l+m+mi}{10}
+            \PY{n}{binsLow} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)} \PY{o}{+} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{n}{num}\PY{p}{)}
+            \PY{n}{binsHigh} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)} \PY{o}{+} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{n}{num}\PY{p}{)}
         
-            \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{rows}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{:} \PY{c+c1}{\PYZsh{}itterate over each year\PYZsq{}s values from the above values and set pixels colours}
-                \PY{n}{image}\PY{p}{[}\PY{n}{x}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{:}\PY{l+m+mi}{451}\PY{p}{]}\PY{o}{=}\PY{n}{binColours}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{digitizedLow}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{x}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{p}{]}
-                \PY{n}{image}\PY{p}{[}\PY{n}{x}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{:}\PY{l+m+mi}{451}\PY{p}{]}\PY{o}{=}\PY{n}{binColours}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{digitizedHigh}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{x}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{p}{]}
-            \PY{n}{printText}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}h2\PYZgt{}Tempreture blanket for year: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZlt{}/h2\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{l+m+mi}{1995}\PY{o}{+}\PY{l+m+mi}{5}\PY{o}{*}\PY{n}{counter}\PY{p}{)}\PY{p}{)}
-            
-            \PY{n}{displayHTML}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{column\PYZus{}stack}\PY{p}{(}\PY{p}{(}\PY{n}{binsLow}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,}
-                                                      \PY{p}{(}\PY{n}{binsHigh}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{,} 
-                                     \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Low bin}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{High bin}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{to\PYZus{}html}\PY{p}{(}\PY{p}{)}\PY{p}{)}
-            
+            \PY{n}{digitizedLow} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,} \PY{n}{binsLow}\PY{p}{)}  \PY{c+c1}{\PYZsh{}put the data into the bins}
+            \PY{n}{digitizedHigh} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{digitize}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,} \PY{n}{binsHigh}\PY{p}{)}
+        
+            \PY{n}{rows} \PY{o}{=} \PY{l+m+mi}{2} \PY{o}{*} \PY{n+nb}{len}\PY{p}{(}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}
+            \PY{n}{image} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{n}{rows}\PY{p}{,} \PY{l+m+mi}{451}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{)}  \PY{c+c1}{\PYZsh{}make a matrix to store the image}
+        \PY{c+c1}{\PYZsh{}itterate over each year\PYZsq{}s values from the above values and set pixels colours}
+            \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{rows}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{:}  
+                \PY{n}{image}\PY{p}{[}\PY{n}{x} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{:}\PY{l+m+mi}{451}\PY{p}{]} \PY{o}{=} \PY{n}{binColours}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{digitizedLow}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{x} \PY{o}{/} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{p}{]}
+                \PY{n}{image}\PY{p}{[}\PY{n}{x}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{:}\PY{l+m+mi}{451}\PY{p}{]} \PY{o}{=} \PY{n}{binColours}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{digitizedHigh}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{x} \PY{o}{/} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{p}{]}
+            \PY{n}{printText}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Tempreture blanket for year: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{l+m+mi}{1995} \PY{o}{+} \PY{l+m+mi}{5} \PY{o}{*} \PY{n}{counter}\PY{p}{)}\PY{p}{)}
+        
+            \PY{n}{displayHTML}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{column\PYZus{}stack}\PY{p}{(}\PY{p}{(}\PY{n}{binsLow}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,}
+                                                      \PY{p}{(}\PY{n}{binsHigh}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{,}
+                                     \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Low bin}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{High bin}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{to\PYZus{}html}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+        
             \PY{n}{outputImage} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{toimage}\PY{p}{(}\PY{n}{image}\PY{p}{)}
-            \PY{n}{outputImage}\PY{o}{.}\PY{n}{save}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{WeatherBlancketsOutput/}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s1}{.png}\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{l+m+mi}{1995}\PY{o}{+}\PY{l+m+mi}{5}\PY{o}{*}\PY{n}{counter}\PY{p}{)}\PY{p}{)}
-            \PY{n}{drawImg}\PY{p}{(}\PY{n}{outputImage}\PY{p}{)} \PY{c+c1}{\PYZsh{}Draw image to screen, using custom draw function to put output in window}
-            \PY{n}{counter}\PY{o}{=}\PY{n}{counter}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{;}
+            \PY{n}{outputImage}\PY{o}{.}\PY{n}{save}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{WeatherBlancketsOutput/}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s1}{.png}\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{l+m+mi}{1995} \PY{o}{+} \PY{l+m+mi}{5} \PY{o}{*} \PY{n}{counter}\PY{p}{)}\PY{p}{)}
+            \PY{n}{drawImg}\PY{p}{(}\PY{n}{outputImage}\PY{p}{)}  \PY{c+c1}{\PYZsh{}Draw image to screen, using custom draw function to put output in window}
+            \PY{n}{counter} \PY{o}{=} \PY{n}{counter} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{;}
 \end{Verbatim}
 
     
@@ -745,52 +765,55 @@ representing the posible tempreture ranges. finally, the PDF is found
 then plotted in 3D.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{rcParams}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{figure.figsize}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{24}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)} \PY{c+c1}{\PYZsh{}Make the figure for this question bigger}
-        
-        \PY{c+c1}{\PYZsh{}define the variables to store the mean, std deviation, range for each day(temp), pdfs and a vector for number of days}
-        \PY{n}{meanDay}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{365}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
-        \PY{n}{stdDay}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{365}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
-        \PY{n}{dayArray}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
-        \PY{n}{pdf}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{365}\PY{p}{,}\PY{l+m+mi}{365}\PY{p}{)}\PY{p}{)}
-        \PY{n}{dayRange}\PY{o}{=}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{365}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}
-        
-        \PY{k}{for} \PY{n}{day} \PY{o+ow}{in} \PY{n}{dayRange}\PY{p}{:}
-            \PY{k}{for} \PY{n}{inx}\PY{p}{,} \PY{n}{year} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{weatherData}\PY{p}{)}\PY{p}{:}
-                \PY{n}{dayArray}\PY{p}{[}\PY{n}{inx}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{=}\PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{[}\PY{n}{day}\PY{p}{]}
-            \PY{n}{meanDay}\PY{p}{[}\PY{n}{day}\PY{p}{]}\PY{o}{=}\PY{n}{dayArray}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)} \PY{c+c1}{\PYZsh{}calculate the mean}
-            \PY{n}{stdDay}\PY{p}{[}\PY{n}{day}\PY{p}{]}\PY{o}{=}\PY{n}{dayArray}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{p}{)} \PY{c+c1}{\PYZsh{} calculate the standard deviation}
-        
-        \PY{c+c1}{\PYZsh{}generate a linear space of all days in the region, for the min to max temp}
-        \PY{n}{tempretureSpace}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{n}{meanDay}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{,}
-                                    \PY{n}{meanDay}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}\PY{p}{,}
-                                    \PY{n+nb}{len}\PY{p}{(}\PY{n}{weatherData}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}\PY{p}{)}
-        
-        \PY{c+c1}{\PYZsh{}itterate over the days again, now generating the pdf}
-        \PY{k}{for} \PY{n}{day} \PY{o+ow}{in} \PY{n}{dayRange}\PY{p}{:}
-            \PY{n}{pdf}\PY{p}{[}\PY{n}{day}\PY{p}{,}\PY{p}{:}\PY{p}{]}\PY{o}{=}\PY{n}{norm}\PY{o}{.}\PY{n}{pdf}\PY{p}{(}\PY{n}{tempretureSpace}\PY{p}{,}
-                                \PY{n}{meanDay}\PY{p}{[}\PY{n}{day}\PY{p}{]}\PY{p}{,}
-                                \PY{n}{stdDay}\PY{p}{[}\PY{n}{day}\PY{p}{]}\PY{p}{)}
-        
-        \PY{c+c1}{\PYZsh{}convert the values to a meshgrid (return coordinate matrices from coordinate vectors)}
-        \PY{n}{tempretureSpace}\PY{p}{,} \PY{n}{dayRange} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{meshgrid}\PY{p}{(}\PY{n}{tempretureSpace}\PY{p}{,} \PY{n}{dayRange}\PY{p}{)}
-        
-        \PY{c+c1}{\PYZsh{}finally, plot it as a 3d surf}
-        \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{p}{)}
-        \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{gca}\PY{p}{(}\PY{n}{projection}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{3d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-        \PY{n}{surf} \PY{o}{=} \PY{n}{ax}\PY{o}{.}\PY{n}{plot\PYZus{}surface}\PY{p}{(}\PY{n}{tempretureSpace}\PY{p}{,}
-                               \PY{n}{dayRange}\PY{p}{,} \PY{n}{pdf}\PY{p}{,}
-                               \PY{n}{cmap}\PY{o}{=}\PY{n}{cm}\PY{o}{.}\PY{n}{coolwarm}\PY{p}{,}
-                               \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{,}
-                               \PY{n}{antialiased}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
-        
-        \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Temperature (C)}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-        \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Days}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-        \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}zlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{f(x)}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-        
-        \PY{c+c1}{\PYZsh{}add a colour bar on the side to see magnitudes}
-        \PY{n}{fig}\PY{o}{.}\PY{n}{colorbar}\PY{p}{(}\PY{n}{surf}\PY{p}{,} \PY{n}{shrink}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{aspect}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{)}
-        \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Surface Plot of Stochastic Process}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{rcParams}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{figure.figsize}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{30}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{)}  \PY{c+c1}{\PYZsh{}Make the figure for this question bigger}
+         
+         \PY{c+c1}{\PYZsh{}define the variables to store the mean, std deviation, }
+         \PY{c+c1}{\PYZsh{} range for each day(temp), pdfs and a vector for number of days}
+         \PY{n}{meanDay} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{365}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+         \PY{n}{stdDay} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{365}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+         \PY{n}{dayArray} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+         \PY{n}{pdf} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{365}\PY{p}{,} \PY{l+m+mi}{365}\PY{p}{)}\PY{p}{)}
+         \PY{n}{dayRange} \PY{o}{=} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{365}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+         
+         \PY{k}{for} \PY{n}{day} \PY{o+ow}{in} \PY{n}{dayRange}\PY{p}{:}
+             \PY{k}{for} \PY{n}{inx}\PY{p}{,} \PY{n}{year} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{weatherData}\PY{p}{)}\PY{p}{:}
+                 \PY{n}{dayArray}\PY{p}{[}\PY{n}{inx}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{n}{year}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{[}\PY{n}{day}\PY{p}{]}
+             \PY{n}{meanDay}\PY{p}{[}\PY{n}{day}\PY{p}{]} \PY{o}{=} \PY{n}{dayArray}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}  \PY{c+c1}{\PYZsh{}calculate the mean}
+             \PY{n}{stdDay}\PY{p}{[}\PY{n}{day}\PY{p}{]} \PY{o}{=} \PY{n}{dayArray}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{p}{)}  \PY{c+c1}{\PYZsh{} calculate the standard deviation}
+         
+         \PY{c+c1}{\PYZsh{}generate a linear space of all days in the region, for the min to max temp}
+         \PY{n}{tempretureSpace} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{n}{meanDay}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{,} 
+                                       \PY{n}{meanDay}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}\PY{p}{,} 
+                                       \PY{n+nb}{len}\PY{p}{(}\PY{n}{weatherData}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{}itterate over the days again, now generating the pdf}
+         \PY{k}{for} \PY{n}{day} \PY{o+ow}{in} \PY{n}{dayRange}\PY{p}{:}
+             \PY{n}{pdf}\PY{p}{[}\PY{n}{day}\PY{p}{,} \PY{p}{:}\PY{p}{]} \PY{o}{=} \PY{n}{norm}\PY{o}{.}\PY{n}{pdf}\PY{p}{(}\PY{n}{tempretureSpace}\PY{p}{,} 
+                                    \PY{n}{meanDay}\PY{p}{[}\PY{n}{day}\PY{p}{]}\PY{p}{,} 
+                                    \PY{n}{stdDay}\PY{p}{[}\PY{n}{day}\PY{p}{]}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{}convert the values to a meshgrid }
+         \PY{c+c1}{\PYZsh{} (return coordinate matrices from coordinate vectors)}
+         \PY{n}{tempretureSpace}\PY{p}{,} \PY{n}{dayRange} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{meshgrid}\PY{p}{(}\PY{n}{tempretureSpace}\PY{p}{,} \PY{n}{dayRange}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{}finally, plot it as a 3d surf}
+         \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{gca}\PY{p}{(}\PY{n}{projection}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{3d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{surf} \PY{o}{=} \PY{n}{ax}\PY{o}{.}\PY{n}{plot\PYZus{}surface}\PY{p}{(}\PY{n}{tempretureSpace}\PY{p}{,}
+                                \PY{n}{dayRange}\PY{p}{,}
+                                \PY{n}{pdf}\PY{p}{,}
+                                \PY{n}{cmap}\PY{o}{=}\PY{n}{cm}\PY{o}{.}\PY{n}{coolwarm}\PY{p}{,}
+                                \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{,}
+                                \PY{n}{antialiased}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+         
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Temperature (C)}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Days}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}zlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{f(x)}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{}add a colour bar on the side to see magnitudes}
+         \PY{n}{fig}\PY{o}{.}\PY{n}{colorbar}\PY{p}{(}\PY{n}{surf}\PY{p}{,} \PY{n}{shrink}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{aspect}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{surface plot of stochastic process}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
     \begin{center}
@@ -798,6 +821,10 @@ then plotted in 3D.
     \end{center}
     { \hspace*{\fill} \\}
     
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} 
+\end{Verbatim}
+
 
     % Add a bibliography block to the postdoc
     

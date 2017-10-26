@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.10.25)  26 OCT 2017 10:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.10.25)  26 OCT 2017 20:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -744,171 +744,172 @@ LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 290.
 
-Underfull \hbox (badness 10000) in paragraph at lines 296--299
-[]\T1/ppl/m/n/10.95 This main file, show-ing all code ex-e-cu-tion, can be seen
- here:
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.294 T
+       he Git repo, storing this code, can be seen here:
+? 
+
+Overfull \hbox (9.15367pt too wide) in paragraph at lines 299--300
+[]\T1/ppl/m/n/10.95 https://github.com/SoIidarity/ICAO-Weather-Analysis-Python/
+blob/master/MainFile.ipynb 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 296--299
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.302 B
+       oth a PDF version and HTML version of this report are included in this
+? 
+
+Underfull \hbox (badness 10000) in paragraph at lines 302--309
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 300--304
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 305--307
-
- []
-
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 310.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 312.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 311.
- [1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 330
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 313.
+LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 332
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmtt.fd
 File: ts1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
+) [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 361.
- [2]
-<output_10_0.png, id=67, 1390.19376pt x 387.4475pt>
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 362.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 11.40997pt on input line 391.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 8.33606pt on input line 391.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 391.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 11.40997pt on input line 391.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 8.33606pt on input line 391.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 391.
+ [2] [3]
+<output_10_0.png, id=76, 1502.61375pt x 605.26125pt>
 File: output_10_0.png Graphic file (type png)
  <use output_10_0.png>
-Package pdftex.def Info: output_10_0.png used on input line 450.
-(pdftex.def)             Requested size: 1390.19037pt x 387.44655pt.
+Package pdftex.def Info: output_10_0.png used on input line 466.
+(pdftex.def)             Requested size: 1502.61009pt x 605.25975pt.
 
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 452--453
+Underfull \hbox (badness 10000) in paragraph at lines 468--469
 
  []
 
+[4 <./output_10_0.png>]
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-3.def
 File: uni-3.def 2013/05/13 UCS: Unicode data U+0300..U+03FF
-)
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 497.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 497.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 497.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 497.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 497.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 497.
- [4 <./output_10_0.png>] <output_14_0.png, id=79, 1385.175pt x 373.395pt>
+) [5]
+<output_14_0.png, id=89, 1497.595pt x 591.20876pt>
 File: output_14_0.png Graphic file (type png)
  <use output_14_0.png>
-Package pdftex.def Info: output_14_0.png used on input line 553.
-(pdftex.def)             Requested size: 1385.17163pt x 373.39409pt.
+Package pdftex.def Info: output_14_0.png used on input line 580.
+(pdftex.def)             Requested size: 1497.59137pt x 591.2073pt.
 
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 555--556
+Underfull \hbox (badness 10000) in paragraph at lines 582--583
 
  []
 
-<output_14_1.png, id=84, 1385.175pt x 373.395pt>
+<output_14_1.png, id=90, 1497.595pt x 591.20876pt>
 File: output_14_1.png Graphic file (type png)
  <use output_14_1.png>
-Package pdftex.def Info: output_14_1.png used on input line 558.
-(pdftex.def)             Requested size: 1385.17163pt x 373.39409pt.
+Package pdftex.def Info: output_14_1.png used on input line 585.
+(pdftex.def)             Requested size: 1497.59137pt x 591.2073pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 560--561
+[6 <./output_14_0.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 587--588
 
  []
 
-<output_14_2.png, id=85, 1385.175pt x 373.395pt>
+<output_14_2.png, id=96, 1497.595pt x 591.20876pt>
 File: output_14_2.png Graphic file (type png)
  <use output_14_2.png>
-Package pdftex.def Info: output_14_2.png used on input line 563.
-(pdftex.def)             Requested size: 1385.17163pt x 373.39409pt.
+Package pdftex.def Info: output_14_2.png used on input line 590.
+(pdftex.def)             Requested size: 1497.59137pt x 591.2073pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 565--566
+Underfull \hbox (badness 10000) in paragraph at lines 592--593
 
  []
 
-<output_14_3.png, id=86, 1385.175pt x 373.395pt>
+<output_14_3.png, id=97, 1497.595pt x 591.20876pt>
 File: output_14_3.png Graphic file (type png)
  <use output_14_3.png>
-Package pdftex.def Info: output_14_3.png used on input line 568.
-(pdftex.def)             Requested size: 1385.17163pt x 373.39409pt.
+Package pdftex.def Info: output_14_3.png used on input line 595.
+(pdftex.def)             Requested size: 1497.59137pt x 591.2073pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--571
-
- []
-
-<output_14_4.png, id=87, 1385.175pt x 373.395pt>
-File: output_14_4.png Graphic file (type png)
- <use output_14_4.png>
-Package pdftex.def Info: output_14_4.png used on input line 573.
-(pdftex.def)             Requested size: 1385.17163pt x 373.39409pt.
- [6 <./output_14_0.png> <./output_14_1.png> <./output_14_2.png> <./output_14_3.
-png>]
-Underfull \hbox (badness 10000) in paragraph at lines 575--576
+Underfull \hbox (badness 10000) in paragraph at lines 597--598
 
  []
 
-[7 <./output_14_4.png>] [8] [9]
-<output_18_0.png, id=123, 1215.54124pt x 341.275pt>
+[7 <./output_14_1.png> <./output_14_2.png> <./output_14_3.png>] [8] [9]
+[10] <output_18_0.png, id=128, 1577.895pt x 1105.12875pt>
 File: output_18_0.png Graphic file (type png)
- <use output_18_0.png>
-Package pdftex.def Info: output_18_0.png used on input line 797.
-(pdftex.def)             Requested size: 1215.53828pt x 341.27415pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 799--800
+<use output_18_0.png>
+Package pdftex.def Info: output_18_0.png used on input line 820.
+(pdftex.def)             Requested size: 1577.89116pt x 1105.12607pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 822--823
 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 806.
-[10 <./output_18_0.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 806.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 833.
+[11 <./output_18_0.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 833.
  (./MainFile.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 806.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 806.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 833.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 833.
 Package rerunfilecheck Info: File `MainFile.out' has not changed.
 (rerunfilecheck)             Checksum: 4FF897C76F02AF93AFF7155A45EA7A57;809.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 806.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 833.
  ) 
 Here is how much of TeX's memory you used:
- 11406 strings out of 494945
- 169245 string characters out of 6181031
- 265822 words of memory out of 5000000
- 14447 multiletter control sequences out of 15000+600000
- 32684 words of font info for 83 fonts, out of 8000000 for 9000
+ 11413 strings out of 494945
+ 169227 string characters out of 6181031
+ 266824 words of memory out of 5000000
+ 14443 multiletter control sequences out of 15000+600000
+ 35680 words of font info for 93 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 36i,6n,38p,457b,461s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,6n,38p,462b,461s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/chris/.texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/tcit1095.600
 pk>{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc} </home/chris/.te
 xlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ecit1095.600pk> </home/chris/.t
 exlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/tctt1095.600pk> </home/chris/.
 texlive2016/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/mathpazo/fplmri.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/p
-alatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr
-i8a.pfb>
-Output written on MainFile.pdf (10 pages, 381896 bytes).
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/mathpazo/fplmr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/mathpazo/fplmri.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/up
+lb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on MainFile.pdf (11 pages, 555319 bytes).
 PDF statistics:
- 282 PDF objects out of 1000 (max. 8388607)
- 139 compressed objects within 2 object streams
- 33 named destinations out of 1000 (max. 500000)
- 132 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 295 PDF objects out of 1000 (max. 8388607)
+ 151 compressed objects within 2 object streams
+ 34 named destinations out of 1000 (max. 500000)
+ 127 words of extra memory for PDF output out of 10000 (max. 10000000)
 
