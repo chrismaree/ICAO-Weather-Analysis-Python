@@ -11784,6 +11784,7 @@ div#notebook {
 This main file, showing all code execution, can be seen here: <a href="https://github.com/SoIidarity/ICAO-Weather-Analysis-Python/blob/master/MainFile.ipynb">https://github.com/SoIidarity/ICAO-Weather-Analysis-Python/blob/master/MainFile.ipynb</a></p>
 <p>Both a PDF version and HTML version of this report are included in this submission. For an optimal viewing experience, please view the HTML version as the formatting is persistent from the Jupyter notebook. Additionally, the PDF version has HTML elements stripped out, such as some images. Alternativly, view the second Git link above to view the notebook online, through Github.</p>
 <p>Images in this notebook are not vectors. For full vector images, in PDF form, please seen the Figures directory on Github.</p>
+<p>The weather for this location is very cold with high swings in temperature during the year so large variance in the data is to be expected.</p>
 
 </div>
 </div>
@@ -11929,7 +11930,7 @@ This main file, showing all code execution, can be seen here: <a href="https://g
 $$\bar{x} = \frac{1}{n}\left (\sum_{i=1}^n{x_i}\right ) = \frac{x_1+x_2+\cdots +x_n}{n}$$</p>
 <p>Standard deviation is used to quantify variance in the data, as defined by:
 $$s = \sqrt{\frac{\sum_{i=1}^N (x_i - \overline{x})^2}{N-1} }$$</p>
-<h3 id="Comment-on-findings">Comment on findings<a class="anchor-link" href="#Comment-on-findings">&#182;</a></h3><p>The minimum, maximum, mean and standard deviations are very similar for each year. this is to be expected as they were taken from the same location. However, as time went on over the past 20 years, it seems that the averages became walmer with both the maximums and minimums increasing over time. There are outlyers in this trend as seen in 2010's minimum tempreture. This trend is also verified by looking at the mean where each year is shown to be getting walmer.</p>
+<h3 id="Comment-on-findings">Comment on findings<a class="anchor-link" href="#Comment-on-findings">&#182;</a></h3><p>The minimum, maximum, mean and standard deviations are very similar for each year. This is to be expected as they were taken from the same location. However, as time went on over the past 20 years, it seems that the averages became walmer with both the maximums and minimums increasing over time. There are outlyers in this trend as seen in 2010's minimum tempreture. This trend is also verified by looking at the mean where each year is shown to be getting walmer.</p>
 <p>The high standard deviation seen is accounted for by the large tempreture changes during the course of the year. A delta between the maximum of 37 and minimum of -45 of 82 degrees is rather high.</p>
 
 </div>
@@ -12033,6 +12034,7 @@ $$s = \sqrt{\frac{\sum_{i=1}^N (x_i - \overline{x})^2}{N-1} }$$</p>
 <p>This value is calculated by using the seaborn distplot function that recreates the standard PDF equation as:
 $$\operatorname{E}[X] = \int_{-\infty}^\infty x\,f(x)\,dx$$</p>
 <h3 id="Comment-on-findings">Comment on findings<a class="anchor-link" href="#Comment-on-findings">&#182;</a></h3><p>Each year has a similar general probobility distribution function. They apear to be close to normal in shape. general average trends can also be seen through this graph such as 2005 had higher distribution of both highs and lows, with a lower distribution in the middel. This indicates more extreme weather during this year.</p>
+<p>The PDF also can show the most likely distribution of temperatures, indicating the temperature range of the sets. From this, one can clearly see the most likely temperatures for the range between -30 and 15 degrees celsius.</p>
 
 </div>
 </div>
@@ -14481,7 +14483,7 @@ ERmk/w82Qm8/aw/HrQAAAABJRU5ErkJggg==
 <h2 id="Question-4">Question 4<a class="anchor-link" href="#Question-4">&#182;</a></h2><p>The cross-correlation between each year’s annual temperatures is now calculated. This is shown as a matrix output
 Note here that we are slicing the data on each year to ignore the leap year in 2000. This is done as the correlation needs matricies of the same dimension.</p>
 <p>Additionally note that we need to normalise the data. This is the same as using the numpy corrfoef function.</p>
-<p>TO calculate this, the numpy correlate function was used. This function makes use of this equation:</p>
+<p>To calculate this, the numpy correlate function was used. This function makes use of this equation:</p>
 $$(f \star g)(\tau)\ \stackrel{\mathrm{def}}{=} \int_{-\infty}^{\infty} f^*(t)\ g(t+\tau)\,dt$$<h3 id="Comment-on-findings">Comment on findings<a class="anchor-link" href="#Comment-on-findings">&#182;</a></h3><p>Through the cross-correlation of the presented data, one can see the relationship between each years weather. The closer these values are to 1, the more closely correlated the data is. The highest correlation is seen between 2010 and 1995 intrestingly enough with a 94% correlation. The main diagonal of 1's indicates the full correlation, with each year corelated against its self.</p>
 
 </div>
@@ -14590,7 +14592,7 @@ $$(f \star g)(\tau)\ \stackrel{\mathrm{def}}{=} \int_{-\infty}^{\infty} f^*(t)\ 
 <p>Confidence intervals are drawn as a cone. By default, this is set to a 95% confidence interval, suggesting that correlation values outside of this code are very likely a correlation and not a statistical fluke.</p>
 <p>First, each Autocorrelation is drawn on its own graph. After, they are overlayed.</p>
 <p>Autocorrelation is found through the use of the plot_acf function from the tsaplots statistics library. From a signal processing point of view, this can be seen as:</p>
-$$R_{ff}(\tau) = (f * g_{-1}(\overline{f}))(\tau) = \int_{-\infty}^\infty f(u+\tau)\overline{f}(u)\, {\rm d}u = \int_{-\infty}^\infty f(u)\overline{f}(u-\tau)\, {\rm d}u$$<h3 id="Comment-on-findings">Comment on findings<a class="anchor-link" href="#Comment-on-findings">&#182;</a></h3><p>This autocorrelation shows how each year is related to a time-shifted version of itself. This can be seen as an effective convolution process. From this, one can see how each part of the year is related to the rest of the year for a given shift amount τ. For example, at τ=0, the magnitude is 1. At this time, no shifting has occurred. At approximately τ=150, there is the highest negative correlation seen. This is due to the correlation between the middle of summer and winter of the two data sets.</p>
+$$R_{ff}(\tau) = (f * g_{-1}(\overline{f}))(\tau) = \int_{-\infty}^\infty f(u+\tau)\overline{f}(u)\, {\rm d}u = \int_{-\infty}^\infty f(u)\overline{f}(u-\tau)\, {\rm d}u$$<h3 id="Comment-on-findings">Comment on findings<a class="anchor-link" href="#Comment-on-findings">&#182;</a></h3><p>This autocorrelation shows how each year is related to a time-shifted version of itself. This can be seen as an effective convolution process. From this, one can see how each part of the year is related to the rest of the year for a given shift amount τ. For example, at τ=0, the magnitude is 1. At this time, no shifting has occurred. At approximately τ=150, there is the highest negative correlation seen. This is due to the correlation between the middle of summer and winter of the two data sets. At this negative region, the corilation is comparing the increase in summer against the decrease in winter showing a negative value.</p>
 
 </div>
 </div>
@@ -18523,7 +18525,7 @@ $$[[t_0,t_1],...,[t_9,t_10]]$$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">binColours</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.139681</span><span class="p">,</span> <span class="mf">0.311666</span><span class="p">,</span> <span class="mf">0.550652</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.276518</span><span class="p">,</span> <span class="mf">0.539432</span><span class="p">,</span> <span class="mf">0.720771</span><span class="p">],</span>
@@ -18553,7 +18555,7 @@ $$[[t_0,t_1],...,[t_9,t_10]]$$</p>
                              <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Low bin&quot;</span><span class="p">,</span> <span class="s2">&quot;High bin&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">to_html</span><span class="p">())</span>
 
     <span class="n">outputImage</span> <span class="o">=</span> <span class="n">smp</span><span class="o">.</span><span class="n">toimage</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-    <span class="n">outputImage</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;WeatherBlancketsOutput/</span><span class="si">{}</span><span class="s1">.png&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1995</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">counter</span><span class="p">))</span>
+    <span class="n">outputImage</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;WeatherBlancketsOutput/</span><span class="si">{}</span><span class="s1">.jpg&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1995</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">counter</span><span class="p">))</span>
     <span class="n">drawImg</span><span class="p">(</span><span class="n">outputImage</span><span class="p">)</span>  <span class="c1">#Draw image to screen, using custom draw function to put output in window</span>
     <span class="n">counter</span> <span class="o">=</span> <span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
 </pre></div>
